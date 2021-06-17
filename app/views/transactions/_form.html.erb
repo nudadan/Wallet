@@ -1,0 +1,53 @@
+    <%= form_with(model: transaction) do |form| %>
+      <% if transaction.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+          <ul>
+            <% transaction.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+      <div class="field form-group">
+        <%= form.label :reference_id %>
+        <%= form.text_field :reference_id, class: "form-control" %>
+      </div>
+    
+      <div class="field form-group">
+        <%= form.label :trx_type %>
+        <%= form.select(:trx_type, options_for_select([['Top Up', 'c'], ['Transfer', 'd']]), class: "form-control") %>
+      </div>
+
+      <div class="field form-group">
+        <% form.label :wallet_id %>
+        <%= form.number_field :wallet_id, id: :wallet_id, value: current_user.id, type: :hidden %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :trx_date %>
+        <%= form.date_select :trx_date, class: "form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :amount %>
+        <%= form.text_field :amount, class: "form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :dest_wallet_id %>
+        <%= form.number_field :dest_wallet_id, class: "form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :description %>
+        <%= form.text_field :description, class: "form-control" %>
+      </div>
+      <hr/>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>

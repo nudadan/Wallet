@@ -1,0 +1,2 @@
+class RefTrx < ApplicationRecord
+end

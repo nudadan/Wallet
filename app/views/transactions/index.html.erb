@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Wallet</th>
+      <th>Trx date</th>
+      <th>Amount</th>
+      <th>Dest wallet</th>
+      <th>Description</th>
+      <th>Trx type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.reference_id %></td>
+        <td><%= transaction.wallet_id %></td>
+        <td><%= transaction.trx_date %></td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.dest_wallet_id %></td>
+        <td><%= transaction.description %></td>
+        <td><%= transaction.trx_type %></td>
+        <td><%= link_to 'Show', transaction %></td>
+        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_transaction_path %>

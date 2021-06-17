@@ -1,0 +1,30 @@
+<div class="alert alert-info mt-3" role="alert">
+    <h1>Welcome <%= current_user.email %></h1>    
+    <hr/>
+    <% if @wallets.first.nil? %>
+        <p>You have no wallet yet, please create your wallet below..</p>
+        <hr/>
+
+        <%= link_to 'Create Wallet', new_wallet_path, class: "btn btn-success btn-light" %>
+    <% else %>
+    <% 
+        balance=0 
+        tBalance=""
+        
+        @wallets.each do |w| %>
+        <% 
+            if w.user_id == current_user.id
+                trxs = w.transactions
+                trxs.each do |t| 
+                    lAmount = t.type == 'Credit' ? t.amount : (t.amount * -1)
+                    balance += lAmount
+                    tBalance = tocurrency(balance)
+                end                
+            end
+        %>
+    <% end %>
+        <p>Your Wallet Balance is</p> <%= tBalance %>
+    <% end %>
+</div>
+
+

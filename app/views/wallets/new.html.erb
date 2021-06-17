@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+        <div class="card mt-3">
+            <div class="card-header">
+                <h2>New Wallet</h2>
+            </div>
+            <div class="card-body">
+                <%= render 'form', wallet: @wallet %>
+            </div>
+            <div class="card-footer">
+                <%= link_to 'Back', wallets_path %>
+            </div>
+        </div>
+    </div>
+</div>

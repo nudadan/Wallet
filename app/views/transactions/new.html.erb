@@ -1,0 +1,17 @@
+<div class="row mt-3">
+  <div class="col-md-8 col-lg-8">
+    <div class="card mt-3">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>New Transaction</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <%= render 'form', transaction: @transaction %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Back', transactions_path %>
+        </div>
+    </div>
+</div>
+</div>
